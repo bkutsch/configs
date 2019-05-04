@@ -1,9 +1,9 @@
 [user]
-	name = Ben Kutsch
-	email = bkutsch@inspirato.com
+	name = [Name goes here]
+	email = [user@test.com]
 [core]
 	autocrlf = true
-	excludesfile = C:\\Users\\bkutsch\\Documents\\gitignore_global.txt
+	excludesfile = C:\\Users\\[user dir]\\Documents\\gitignore_global.txt
 	editor = 'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -nosession
 [crdential]
 	helper = manager
