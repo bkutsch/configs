@@ -1,0 +1,74 @@
+[user]
+	name = [Name goes here]
+	email = [user@example.com]
+[core]
+	autocrlf = input
+	excludesfile = ~/.gitignore_global
+	editor = vim
+[credential]
+	helper = osxkeychain
+[diff]
+	tool = bc
+[difftool]
+	prompt = false
+[difftool "bc"]
+	cmd = "/Applications/Beyond Compare.app/Contents/MacOS/bcomp" "$LOCAL" "$REMOTE"
+[merge]
+	tool = bc
+[mergetool]
+	prompt = false
+	keepBackup = false
+[mergetool "bc"]
+	cmd = "/Applications/Beyond Compare.app/Contents/MacOS/bcomp" "$REMOTE" "$LOCAL" "$BASE" "$MERGED"
+	trustExitCode = true
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[push]
+	default = current
+[alias]
+	aa = add --all
+	co = checkout
+	cob = checkout -b
+	ci = commit -a
+	cia = commit --amend
+	br = branch
+	ba = branch -a
+	ec = config --global -e
+	st = status -s -buno
+	ffs = flow feature start
+	ffp = flow feature publish
+	unstage = reset HEAD --
+	rhh = reset --hard HEAD
+	rpo = remote prune origin
+	last = log -1 HEAD
+	pf = push origin HEAD --force
+	rdev = rebase origin/develop
+	untrack = update-index --assume-unchanged
+	open = "!f() { REPO_URL=$(git config remote.origin.url); open ${REPO_URL%%.git}; }; f"
+	browse = !git open
+	lgo = log --oneline
+	lg = !git lg1
+	lg1 = !git lg1-specific --all
+	lg2 = !git lg2-specific --all
+	lg3 = !git lg3-specific --all
+	lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+	lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+	lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(dim cyan)(committed: %cD)%C(reset) %C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
+	cb = rev-parse --abbrev-ref HEAD
+	pb = !git show-branch -a | grep '\\*' | grep -v \"`git cb`\" | head -n1 | sed 's/.*\\[\\(.*\\)\\].*/\\1/' | sed 's/[\\^~].*//'
+	squash = "!f(){ git reset --soft HEAD~${1} && git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
