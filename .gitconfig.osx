@@ -4,19 +4,23 @@
 [core]
 	autocrlf = input
 	excludesfile = ~/.gitignore_global
-	editor = vim
+	editor = code
 [credential]
-	helper = osxkeychain
+	helper =
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
 [diff]
 	tool = bc
+	guitool = beyondcompare5
 [difftool]
-	prompt = false
+	prompt = true
 [difftool "bc"]
 	cmd = "/Applications/Beyond Compare.app/Contents/MacOS/bcomp" "$LOCAL" "$REMOTE"
 [merge]
 	tool = bc
 [mergetool]
-	prompt = false
+	prompt = true
 	keepBackup = false
 [mergetool "bc"]
 	cmd = "/Applications/Beyond Compare.app/Contents/MacOS/bcomp" "$REMOTE" "$LOCAL" "$BASE" "$MERGED"
@@ -40,6 +44,14 @@
 	untracked = cyan
 [push]
 	default = current
+[init]
+	defaultBranch = main
+[fetch]
+	prune = true
+[pull]
+	rebase = false
+[rerere]
+	enabled = true
 [alias]
 	aa = add --all
 	co = checkout

@@ -5,25 +5,18 @@
 	autocrlf = true
 	excludesfile = C:\\Users\\[user dir]\\Documents\\gitignore_global.txt
 	editor = 'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -nosession
-[crdential]
+[credential]
 	helper = manager
 [diff]
 	tool = bc
-	guitool = beyondcompare3
+	guitool = beyondcompare5
 [difftool]
 	prompt = true
-[difftool "vsdiffmerge"]
-	cmd = \"C:\\Program Files (x86)\\Beyond Compare 3\\BCompare.exe\" \"$LOCAL\" \"$REMOTE\" //t
-	keepbackup = false
 [merge]
 	tool = bc
 [mergetool]
 	prompt = true
 	keepBackup = false
-[mergetool "vsdiffmerge"]
-	cmd = \"C:\\Program Files (x86)\\Beyond Compare 3\\BCompare.exe\" \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\" //m
-	trustexitcode = true
-	keepbackup = false
 [color]
 	branch = auto
 	diff = auto
@@ -41,17 +34,21 @@
 	added = yellow
 	changed = green
 	untracked = cyan
-[difftool "sourcetree"]
-	cmd = 'C:/Program Files (x86)/Beyond Compare 3/BCompare.exe' \"$LOCAL\" \"$REMOTE\"
-[mergetool "sourcetree"]
-	cmd = 'C:/Program Files (x86)/Beyond Compare 3/BCompare.exe' \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
-	trustExitCode = true
 [push]
 	default = current
 [difftool "bc"]
-	path = C:/Program Files (x86)/Beyond Compare 3/BCompare.exe
+	cmd = "C:/Program Files/Beyond Compare 5/BCompare.exe" "$LOCAL" "$REMOTE"
 [mergetool "bc"]
-	path = C:/Program Files (x86)/Beyond Compare 3/BCompare.exe
+	cmd = "C:/Program Files/Beyond Compare 5/BCompare.exe" "$REMOTE" "$LOCAL" "$BASE" "$MERGED"
+	trustExitCode = true
+[init]
+	defaultBranch = main
+[fetch]
+	prune = true
+[pull]
+	rebase = false
+[rerere]
+	enabled = true
 [alias]
 	aa = add --all
 	co = checkout
@@ -84,7 +81,3 @@
 	cb = rev-parse --abbrev-ref HEAD
 	pb = !git show-branch -a | ack '\\*' | ack -v \"`git cb`\" | head -n1 | sed 's/.*\\[\\(.*\\)\\].*/\\1/' | sed 's/[\\^~].*//'
 	squash = "!f(){ git reset --soft HEAD~${1} && git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
-[difftool "beyondcompare3"]
-	path = C:/Program Files (x86)/Beyond Compare 3/bcomp.exe
-	cmd = \"C:/Program Files (x86)/Beyond Compare 3/bcomp.exe\" \"$LOCAL\" \"$REMOTE\"
-
