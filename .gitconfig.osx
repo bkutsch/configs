@@ -11,19 +11,19 @@
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 [diff]
-	tool = bc
+	tool = bcomp
 	guitool = beyondcompare5
 [difftool]
 	prompt = true
-[difftool "bc"]
-	cmd = "/Applications/Beyond Compare.app/Contents/MacOS/bcomp" "$LOCAL" "$REMOTE"
+[difftool "bcomp"]
+	cmd = bcomp "$LOCAL" "$REMOTE"
 [merge]
-	tool = bc
+	tool = bcomp
 [mergetool]
 	prompt = true
 	keepBackup = false
-[mergetool "bc"]
-	cmd = "/Applications/Beyond Compare.app/Contents/MacOS/bcomp" "$REMOTE" "$LOCAL" "$BASE" "$MERGED"
+[mergetool "bcomp"]
+	cmd = bcomp "$REMOTE" "$LOCAL" "$BASE" "$MERGED"
 	trustExitCode = true
 [color]
 	branch = auto
